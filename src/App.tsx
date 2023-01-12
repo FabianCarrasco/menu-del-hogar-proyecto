@@ -1,21 +1,20 @@
 import React, { useState } from 'react';
 // import logo from './logo.svg';
 import './App.css';
-import Main from './components/Main/Main';
+import TopMainScreen from './components/Main/TopMainScreen';
+import SearchBarSection from './components/Main/SearchBarSection';
+import RecipesList from './components/Main/RecipesList';
+import { edamam } from './interfaces/EdamamRecipeInterface';
 
 function App() {
 
-  let [search, setSearch] = useState('');
-
-  const searchForRecipe = (recipeSearch: string) => {
-    setSearch(recipeSearch);
-  }
-
+  const [recipesList, setRecipesList] = useState<edamam|undefined>(undefined)
   return (
     <div className="App">
       <header className="App-header">
-        <h1>{search}</h1>
-        <Main searchForRecipe={searchForRecipe}/>
+        <TopMainScreen/>
+        <SearchBarSection setRecipesList={setRecipesList}/>
+        <RecipesList recipesList={recipesList}/>
       </header>
     </div>
   );
