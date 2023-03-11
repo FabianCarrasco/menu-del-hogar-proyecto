@@ -18,7 +18,7 @@ spoonRouter.get('/', (req, res) => {
 
 spoonRouter.route('/:id')
     .get((req, res) => {
-        res.send('Hello Spoonacular')
+        res.json(req.recipe)
     })
     .put((req,res) => {
 
@@ -45,6 +45,7 @@ spoonRouter.param('id', async (req, res, next, id) => {
         return fetch(`${spoonRoot}/recipes/${id}/analyzedInstructions?apiKey=${process.env.SPOONACULAR_API_KEY}`)
             .then(response => response.json())
             .then(response => {
+                console.log(response)
                 recInstructions = response
             })
             .catch(() => console.log("Error, instructions could not be fetched."))
