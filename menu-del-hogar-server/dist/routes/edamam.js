@@ -8,4 +8,7 @@ const edamamRouter = express_1.default.Router();
 edamamRouter.get('/', (req, res) => {
     res.send('Hello Edamam');
 });
+edamamRouter.get('/v2', (req, res) => {
+    res.send('Hello Edamam V2');
+});
 exports.default = edamamRouter;

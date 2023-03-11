@@ -13,6 +13,9 @@ app.get('/', (req, res) => {
     res.send('Hello from Express + TS!')
 })
 
+app.use('/edamam', edamamRouter)
+app.use('/spoon', spoonRouter)
+
 app.listen(port, () => {
     console.log(`[server] now listening on port ${port}`)
 })

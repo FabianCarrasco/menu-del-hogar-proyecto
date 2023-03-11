@@ -40,8 +40,12 @@ const dotenv = __importStar(require("dotenv"));
 dotenv.config();
 const spoonRouter = express_1.default.Router();
 const spoonRoot = 'https://api.spoonacular.com';
+spoonRouter.get('/', (req, res) => {
+    res.send('Hello Spoonacular');
+});
 spoonRouter.route('/:id')
     .get((req, res) => {
+    res.send('Hello Spoonacular');
 })
     .put((req, res) => {
 })

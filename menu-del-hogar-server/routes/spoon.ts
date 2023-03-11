@@ -12,9 +12,13 @@ dotenv.config()
 const spoonRouter = express.Router()
 const spoonRoot = 'https://api.spoonacular.com'
 
+spoonRouter.get('/', (req, res) => {
+    res.send('Hello Spoonacular')
+})
+
 spoonRouter.route('/:id')
     .get((req, res) => {
-
+        res.send('Hello Spoonacular')
     })
     .put((req,res) => {
 
