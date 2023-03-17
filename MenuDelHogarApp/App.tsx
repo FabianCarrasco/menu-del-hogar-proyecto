@@ -1,12 +1,15 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React, {useRef, useEffect} from 'react';
+import { ImageBackground, StyleSheet, Text, View, Animated } from 'react-native';
+import { Keyframe } from 'react-native-reanimated';
 
+// Functional component
 export default function App() {
   return (
-    <View style={styles.container}>
+    <ImageBackground source={{uri: "https://picsum.photos/2000"}} style={styles.container}>
       <Text>Open up App.tsx to start working on your app!</Text>
       <StatusBar style="auto" />
-    </View>
+    </ImageBackground>
   );
 }
 
@@ -16,5 +19,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
+    backGroundPosition: 'left', 
   },
 });
