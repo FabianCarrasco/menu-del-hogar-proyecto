@@ -1,0 +1,7 @@
+{
+  "name": "menudelhogarcapacitor",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "custom"
+}
