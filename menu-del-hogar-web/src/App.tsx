@@ -1,14 +1,16 @@
 import React, { useState } from 'react';
 // import logo from './logo.svg';
-import './App.css';
+// import './App.css';
+import './style.css';
 import TopMainScreen from './components/Main/TopMainScreen';
 import SearchBarSection from './components/Main/SearchBarSection';
 import RecipesList from './components/Main/RecipesList';
-import { edamam } from './interfaces/EdamamRecipeInterface';
+import { edamam, recipe } from './interfaces/EdamamRecipeInterface';
 
 function App() {
 
   const [recipesList, setRecipesList] = useState<edamam|undefined>(undefined)
+
   return (
     <div className="App">
       <header className="App-header">

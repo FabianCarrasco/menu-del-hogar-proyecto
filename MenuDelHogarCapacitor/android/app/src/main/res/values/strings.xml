@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">menudelhogarcapacitor</string>
+    <string name="title_activity_main">menudelhogarcapacitor</string>
+    <string name="package_name">com.menudelhogar.app</string>
+    <string name="custom_url_scheme">com.menudelhogar.app</string>
+</resources>
