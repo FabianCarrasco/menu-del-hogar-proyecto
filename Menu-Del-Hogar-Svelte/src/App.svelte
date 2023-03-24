@@ -1,7 +1,7 @@
 <script lang="ts">
     import type { Edamam, EdamamV2, Recipes,  } from "./interfaces/Edamam";
 
-    const ApiRoot = "http://fabiancarrasco.com:3000"
+    const ApiRoot = "https//fabiancarrasco.com/api"
     let recipeList: Recipes[] = []
 
     let search: string = "";
@@ -13,6 +13,7 @@
                 console.log(data)
                 recipeList = data.hits
             })
+        search = ""
     };
 </script>
 
