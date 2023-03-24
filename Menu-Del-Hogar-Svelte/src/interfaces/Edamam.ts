@@ -125,7 +125,7 @@ export interface Edamam {
                 unit: string,
                 sub: sub[]
             }[]
-        }
+        }[]
     }
 }
 
@@ -277,6 +277,145 @@ export interface EdamamV2 {
             }
         }
     }[],
+}
+
+export interface Recipes{
+    recipe: {
+        uri: string,
+        label: string,
+        image: string,
+        images: {
+            THUMBNAIL: {
+                url: string,
+                width: number,
+                height: number,
+            },
+            SMALL: {
+                url: string,
+                width: number,
+                height: number,
+            },
+            REGULAR: {
+                url: string,
+                width: number,
+                height: number,
+            },
+        },
+        source: string,
+        url: string,
+        shareAs: string,
+        yield: number,
+        dietLabels: string[],
+        healthLabels: string[],
+        cautions: string[],
+        ingredientLines: string[],
+        ingredients: {
+            text: string,
+            quantity: number,
+            measure: string,
+            food: string,
+            weight: number,
+            foodCategory: string,
+            foodId: string,
+            image: string,
+        }[],
+        calories: number,
+        totalCO2Emissions: number,
+        co2EmissionsClass: string,
+        totalWeight: number,
+        totalTime: number,
+        cuisineType: string[],
+        mealType: string[],
+        dishType: string[],
+        totalNutrients: {
+            ENERC_KCAL: nutrient,
+            FAT: nutrient,
+            FASAT: nutrient,
+            FATRN: nutrient,
+            FAMS: nutrient,
+            FAPU: nutrient,
+            CHOCDF: nutrient,
+            "CHOCDF.net": nutrient,
+            FIBTG: nutrient,
+            SUGAR: nutrient,
+            "SUGAR.added": nutrient,
+            PROCNT: nutrient,
+            CHOLE: nutrient,
+            NA: nutrient,
+            CA: nutrient,
+            MG: nutrient,
+            K: nutrient,
+            FE: nutrient,
+            ZN: nutrient,
+            P: nutrient,
+            VITA_RAE: nutrient,
+            VITC: nutrient,
+            THIA: nutrient,
+            RIBF: nutrient,
+            NIA: nutrient,
+            VITB6A: nutrient,
+            FOLDFE: nutrient,
+            FOLFD: nutrient,
+            FOLAC: nutrient,
+            VITB12: nutrient,
+            VITD: nutrient,
+            TOCPHA: nutrient,
+            VITK1: nutrient,
+            "Sugar.alcohol": nutrient,
+            WATER: nutrient,
+        },
+        totalDaily: {
+            ENERC_KCAL: nutrient,
+            FAT: nutrient,
+            FASAT: nutrient,
+            CHOCDF: nutrient,
+            FIBTG: nutrient,
+            PROCNT: nutrient,
+            CHOLE: nutrient,
+            NA: nutrient,
+            CA: nutrient,
+            MG: nutrient,
+            K: nutrient,
+            FE: nutrient,
+            ZN: nutrient,
+            P: nutrient,
+            VITA_RAE: nutrient,
+            VITC: nutrient,
+            THIA: nutrient,
+            RIBF: nutrient,
+            NIA: nutrient,
+            VITB6A: nutrient,
+            FOLDFE: nutrient,
+            VITB12: nutrient,
+            VITD: nutrient,
+            TOCPHA: nutrient,
+            VITK1: nutrient,
+        },
+        digest: {
+            label: string,
+            tag: string,
+            schemaOrgTag: string,
+            total: number,
+            hasRDI: boolean,
+            daily: number,
+            unit: string,
+            sub: {
+                label: string,
+                tag: string,
+                schemaOrgTag: string,
+                total: number,
+                hasRDI: boolean,
+                daily: number,
+                unit: string,
+            }[]
+        }
+    },
+    _links: {
+        self: {
+            title: string,
+            href: string,
+        }
+    }
 }
 
 export interface Query {
