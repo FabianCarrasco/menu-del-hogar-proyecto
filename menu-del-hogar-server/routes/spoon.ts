@@ -1,5 +1,6 @@
 import express, {Express, Request, response, Response} from 'express'
 import {AnalizedInstructions, RecipeInformation} from '../interfaces/Spooncaular'
+import cors from 'cors'
 import * as dotenv from 'dotenv'
 
 interface AnalyzedRecipe {
@@ -11,6 +12,11 @@ dotenv.config()
 
 const spoonRouter = express.Router()
 const spoonRoot = 'https://api.spoonacular.com'
+
+spoonRouter.use(cors({
+    origin: '*',
+    methods: ['GET', 'POST'],
+}))
 
 spoonRouter.get('/', (req, res) => {
     res.send('Hello Spoonacular')
