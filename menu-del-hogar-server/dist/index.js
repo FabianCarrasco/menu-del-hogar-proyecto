@@ -29,6 +29,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const edamam_1 = __importDefault(require("./routes/edamam"));
 const spoon_1 = __importDefault(require("./routes/spoon"));
+const cors = __importStar(require("cors"));
 const dotenv = __importStar(require("dotenv"));
 dotenv.config();
 const app = (0, express_1.default)();
@@ -36,6 +37,10 @@ const port = process.env.PORT || 3000;
 app.get('/', (req, res) => {
     res.send('Hello from Express + TS!');
 });
+app.use(cors.default({
+    origin: '*',
+    methods: ['GET', 'POST']
+}));
 app.use('/edamam', edamam_1.default);
 app.use('/spoon', spoon_1.default);
 app.listen(port, () => {

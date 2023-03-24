@@ -1,18 +1,21 @@
 import express, {Express, Request, Response} from 'express';
 import edamamRouter from './routes/edamam'
 import spoonRouter from './routes/spoon'
-
+import * as cors from 'cors'
 import * as dotenv from 'dotenv';
 
 dotenv.config()
 
 const app: Express = express()
 const port: number = process.env.PORT || 3000
-
 app.get('/', (req, res) => {
     res.send('Hello from Express + TS!')
 })
 
+app.use(cors.default({
+    origin: '*',
+    methods: ['GET', 'POST']
+}))
 app.use('/edamam', edamamRouter)
 app.use('/spoon', spoonRouter)
 
