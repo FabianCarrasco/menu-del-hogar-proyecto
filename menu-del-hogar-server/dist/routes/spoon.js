@@ -36,10 +36,15 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
+const cors_1 = __importDefault(require("cors"));
 const dotenv = __importStar(require("dotenv"));
 dotenv.config();
 const spoonRouter = express_1.default.Router();
 const spoonRoot = 'https://api.spoonacular.com';
+spoonRouter.use((0, cors_1.default)({
+    origin: '*',
+    methods: ['GET', 'POST'],
+}));
 spoonRouter.get('/', (req, res) => {
     res.send('Hello Spoonacular');
 });

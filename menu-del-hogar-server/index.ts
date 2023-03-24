@@ -8,14 +8,16 @@ dotenv.config()
 
 const app: Express = express()
 const port: number = process.env.PORT || 3000
-app.get('/', (req, res) => {
-    res.send('Hello from Express + TS!')
-})
 
 app.use(cors({
     origin: '*',
-    methods: ['GET', 'POST']
+    methods: ['GET', 'POST'],
 }))
+
+app.get('/', (req, res) => {
+    res.json({name: 'Hello from Express + TS!'})
+})
+
 app.use('/edamam', edamamRouter)
 app.use('/spoon', spoonRouter)
 

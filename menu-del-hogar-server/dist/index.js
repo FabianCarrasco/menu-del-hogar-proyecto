@@ -34,13 +34,13 @@ const dotenv = __importStar(require("dotenv"));
 dotenv.config();
 const app = (0, express_1.default)();
 const port = process.env.PORT || 3000;
-app.get('/', (req, res) => {
-    res.send('Hello from Express + TS!');
-});
 app.use((0, cors_1.default)({
     origin: '*',
-    methods: ['GET', 'POST']
+    methods: ['GET', 'POST'],
 }));
+app.get('/', (req, res) => {
+    res.json({ name: 'Hello from Express + TS!' });
+});
 app.use('/edamam', edamam_1.default);
 app.use('/spoon', spoon_1.default);
 app.listen(port, () => {
