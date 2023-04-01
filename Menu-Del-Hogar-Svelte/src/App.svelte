@@ -4,10 +4,11 @@
     import PSA from "./components/PSA.svelte";
     const ApiRoot = "https://fabiancarrasco.com/api"
     let recipeList: Recipes[] = []
-
+    let start: boolean = true
     let search: string = "";
 
     const searchRecipes = async () => {
+        start = false
         recipeList = []
         await fetch(`${ApiRoot}/edamam/v2/${search}`)
             .then(res => res.json())
@@ -26,20 +27,36 @@
         <input type="text" placeholder="Search for a recipe" bind:value={search}/>
         <button type="submit">Search</button>
     </form>
-    {#each recipeList as recipe}
-        <div class="recipe-card">
-            <h2>{recipe.recipe.label}</h2>
-            <img src={recipe.recipe.image} alt={recipe.recipe.label}/>
-            <p>{Math.ceil(recipe.recipe.calories)} calories</p>
-            <a href={recipe.recipe.url}><button>Start Cooking!</button></a>
-        </div>
-    {:else}
-        <p>Search recipes now!</p>
-    {/each}
+    <div class="content">
+        {#each recipeList as recipe}
+            <div class="recipe-card">
+                <h2>{recipe.recipe.label}</h2>
+                <img src={recipe.recipe.image} alt={recipe.recipe.label}/>
+                <p>{Math.ceil(recipe.recipe.calories)} calories</p>
+                <a href={recipe.recipe.url}><button>Start Cooking!</button></a>
+            </div>
+        {:else}
+            {#if start}
+                <p>Search recipes now!</p>
+            {:else}
+                <div class="loader">
+                    <Circle/>
+                </div>
+            {/if}
+        {/each}
+
+    </div>
     
 </main>
 
 <style>
+    .content {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        justify-content: center;
+        align-items: flex-start;
+    }
     .recipe-card {
         width: 20rem;
         height: auto;
@@ -54,6 +71,8 @@
         justify-content: space-between;
     }
     .loader {
-        flex: auto;
+        margin-top: 3rem;
+        margin-left: auto;
+        margin-right: auto;
     }
 </style>
