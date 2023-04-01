@@ -1,12 +1,14 @@
 <script lang="ts">
     import type { Edamam, EdamamV2, Recipes,  } from "./interfaces/Edamam";
-
-    const ApiRoot = "https//fabiancarrasco.com/api"
+    import {Jumper, BarLoader, Chasing, Circle, Circle3} from 'svelte-loading-spinners'
+    import PSA from "./components/PSA.svelte";
+    const ApiRoot = "https://fabiancarrasco.com/api"
     let recipeList: Recipes[] = []
 
     let search: string = "";
 
     const searchRecipes = async () => {
+        recipeList = []
         await fetch(`${ApiRoot}/edamam/v2/${search}`)
             .then(res => res.json())
             .then((data: EdamamV2) => {
@@ -18,6 +20,7 @@
 </script>
 
 <main>
+    <PSA/>
     <h1>Menú del Hogar</h1>
     <form on:submit|preventDefault={searchRecipes}>
         <input type="text" placeholder="Search for a recipe" bind:value={search}/>
@@ -31,14 +34,15 @@
             <a href={recipe.recipe.url}><button>Start Cooking!</button></a>
         </div>
     {:else}
-        <h2>Search for recipes now!</h2>
+        <p>Search recipes now!</p>
     {/each}
+    
 </main>
 
 <style>
     .recipe-card {
         width: 20rem;
-        height: 30rem;
+        height: auto;
         background-color: #000;
         border-radius: 10px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
@@ -48,5 +52,8 @@
         flex-direction: column;
         align-items: center;
         justify-content: space-between;
+    }
+    .loader {
+        flex: auto;
     }
 </style>
